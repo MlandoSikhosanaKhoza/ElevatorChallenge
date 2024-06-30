@@ -14,6 +14,7 @@ namespace ElevatorChallenge.Shared.Models
         public int MaxPassengers        { get; }
         public List<Elevator> Elevators { get; }
 
+        public Queue<ElevatorRequest> BacklogElevatorRequestQueue             { get; }
         public Dictionary<int, Queue<ElevatorRequest>> FloorRequestDictionary { get; }
 
         public Building(int NumOfElevators, int NumOfFloors,  int MaxPassengers)
@@ -21,8 +22,10 @@ namespace ElevatorChallenge.Shared.Models
             this.NumOfElevators         = NumOfElevators;
             this.NumOfFloors            = NumOfFloors;
             this.MaxPassengers          = MaxPassengers;
-            this.FloorRequestDictionary = FloorRequestFactory.GenerateDictionary(NumOfFloors);
-            this.Elevators              = ElevatorFactory.GeneraterList(NumOfElevators, NumOfFloors, MaxPassengers);
+            
+            this.Elevators                   = ElevatorFactory.GeneraterList(NumOfElevators, NumOfFloors, MaxPassengers);
+            this.FloorRequestDictionary      = FloorRequestFactory.GenerateDictionary(NumOfFloors);
+            this.BacklogElevatorRequestQueue = new Queue<ElevatorRequest>();
         }
     }
 }
