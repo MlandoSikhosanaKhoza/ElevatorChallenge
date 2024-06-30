@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="elevator"></div>
+
+@section Scripts {
+    <script src="~/js/elevator.js"></script>
+    <script>
+        $(document).ready(function () {
+            Elevator.RenderTable();
+            Elevator.InitializeElevatorStatusConnection();
+            Elevator.InitializePassengerStatusConnection();
+        });
+    </script>
+}
