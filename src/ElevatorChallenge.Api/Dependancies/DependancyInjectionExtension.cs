@@ -8,7 +8,9 @@ namespace ElevatorChallenge.Api.Dependancies
         {
             Services.AddSingleton<IBuildingStorageProvider, BuildingStorageProvider>();
             
+            Services.AddScoped<IElevatorLogic, ElevatorLogic>();
             Services.AddScoped<IBuildingLogic, BuildingLogic>();
+            
             
             return Services;
         }

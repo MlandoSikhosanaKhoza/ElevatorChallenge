@@ -13,7 +13,6 @@ namespace ElevatorChallenge.Shared.Models
         public int NumOfFloors          { get; }
         public int MaxPassengers        { get; }
         public List<Elevator> Elevators { get; }
-
         public Queue<ElevatorRequest> BacklogElevatorRequestQueue             { get; }
         public Dictionary<int, Queue<ElevatorRequest>> FloorRequestDictionary { get; }
 
