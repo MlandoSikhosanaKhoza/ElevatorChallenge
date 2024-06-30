@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorChallenge.Status.Console", "ElevatorChallenge.Status.Console\ElevatorChallenge.Status.Console.csproj", "{12B00026-41F1-49F5-BA61-290307F28032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorChallenge.Status.Console", "ElevatorChallenge.Status.Console\ElevatorChallenge.Status.Console.csproj", "{12B00026-41F1-49F5-BA61-290307F28032}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{8D58BC93-E735-48D9-AF8C-768BE56845FA}"
 EndProject
@@ -11,13 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C3155A1A-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{64535F28-A381-40D3-8265-1E89D0BC0862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorChallenge.BusinessLogic", "ElevatorChallenge.BusinessLogic\ElevatorChallenge.BusinessLogic.csproj", "{4742ECB7-3A66-4F06-8763-45CEA2D71DD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorChallenge.BusinessLogic", "ElevatorChallenge.BusinessLogic\ElevatorChallenge.BusinessLogic.csproj", "{4742ECB7-3A66-4F06-8763-45CEA2D71DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorChallenge.User.Console", "ElevatorChallenge.User.Console\ElevatorChallenge.User.Console.csproj", "{861E5577-7C12-427F-9A16-2DBAF9603BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorChallenge.User.Console", "ElevatorChallenge.User.Console\ElevatorChallenge.User.Console.csproj", "{861E5577-7C12-427F-9A16-2DBAF9603BEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorChallenge.Api", "ElevatorChallenge.Api\ElevatorChallenge.Api.csproj", "{DDF2F2E4-20DC-417D-9512-2758EA3A9CC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorChallenge.Api", "ElevatorChallenge.Api\ElevatorChallenge.Api.csproj", "{DDF2F2E4-20DC-417D-9512-2758EA3A9CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorChallenge.Shared", "ElevatorChallenge.Shared\ElevatorChallenge.Shared.csproj", "{94E796B1-093E-40CE-99CD-ACECCE4381A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorChallenge.Shared", "ElevatorChallenge.Shared\ElevatorChallenge.Shared.csproj", "{94E796B1-093E-40CE-99CD-ACECCE4381A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{78524528-BAC8-4D33-8D62-79BCB95C884C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elevator.Challenge.Test", "Elevator.Challenge.Test\Elevator.Challenge.Test.csproj", "{2CBCFD32-44EA-4E74-AD88-471F3659C675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{94E796B1-093E-40CE-99CD-ACECCE4381A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94E796B1-093E-40CE-99CD-ACECCE4381A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94E796B1-093E-40CE-99CD-ACECCE4381A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CBCFD32-44EA-4E74-AD88-471F3659C675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBCFD32-44EA-4E74-AD88-471F3659C675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CBCFD32-44EA-4E74-AD88-471F3659C675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBCFD32-44EA-4E74-AD88-471F3659C675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{861E5577-7C12-427F-9A16-2DBAF9603BEF} = {64535F28-A381-40D3-8265-1E89D0BC0862}
 		{DDF2F2E4-20DC-417D-9512-2758EA3A9CC9} = {8D58BC93-E735-48D9-AF8C-768BE56845FA}
 		{94E796B1-093E-40CE-99CD-ACECCE4381A7} = {C3155A1A-D2BD-4728-AE60-C3C9B7C19E5F}
+		{2CBCFD32-44EA-4E74-AD88-471F3659C675} = {78524528-BAC8-4D33-8D62-79BCB95C884C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2324D91F-A7F7-451E-8D83-26748B20AF86}
