@@ -101,5 +101,46 @@
                 let lastElementIndex = clsName.length - 1;
                 clsName[lastElementIndex].parentElement.removeChild(clsName[lastElementIndex]);
             });
+    },
+    RequestElevator: function () {
+        var fd = new FormData(document.getElementById("request-form"));
+        var url = new URL(`${Elevator.Url}/api/Building/RequestElevator`);
+        url.searchParams.set("currentFloor", fd.get("CurrentFloor"));
+        url.searchParams.set("destinationFloor", fd.get("DestinationFloor"));
+        url.searchParams.set("passengers", fd.get("Passenger"));
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4) {
+                switch (xhttp.status) {
+                    case 200:
+
+                        break;
+                    case 400:
+                        var list = JSON.parse(xhttp.responseText);
+                        var tableObj = document.createElement("table");
+                        tableObj.style.textAlign = "left";
+                        for (var i = 0; i < list.length; i++) {
+                            var tr = document.createElement("tr");
+                            tr.className = "border-bottom";
+                            var td = document.createElement("td");
+                            
+                            td.textContent = list[i];
+
+                            tr.appendChild(td);
+                            tableObj.appendChild(tr);
+                        }
+                        Swal.fire({
+                            icon: "error",
+                            title: 'Error',
+                            html: tableObj.outerHTML
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+        xhttp.open("GET", url.href, true);
+        xhttp.send();
     }
 };

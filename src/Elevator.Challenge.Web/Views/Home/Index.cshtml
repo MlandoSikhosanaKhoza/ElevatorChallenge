@@ -2,15 +2,41 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="elevator"></div>
+<div class="row">
+    <div class="col-md-3">
+        <h3>Request Elevator</h3>
+        <form id="request-form">
+            <input class="form-control mb-1" type="text" placeholder="Current Floor" name="CurrentFloor" id="txt-current-floor" autocomplete="off" />
+            <input class="form-control mb-1" type="text" placeholder="Destination Floor" name="DestinationFloor" id="txt-destination-floor" autocomplete="off" />
+            <input class="form-control mb-1" type="text" placeholder="Passenger" name="Passenger" id="txt-passenger" autocomplete="off" />
+            <button type="submit" class="btn btn-info">Request</button>
+        </form>
+    </div>
+    <div class="col-md-9">
+        <div id="elevator"></div>
+    </div>
+</div>
+
 
 @section Scripts {
     <script src="~/js/elevator.js"></script>
     <script>
         $(document).ready(function () {
+            //Get elevator model
             Elevator.RenderTable();
+            //Establish real time connections            
             Elevator.InitializeElevatorStatusConnection();
             Elevator.InitializePassengerStatusConnection();
+            //Establish an event for when to dispatch an elevator
+            document.getElementById("request-form").onsubmit =( function () {
+                
+                event.preventDefault();
+
+                Elevator.RequestElevator();
+                
+                document.getElementById("request-form").reset();
+                document.getElementById("txt-current-floor").focus();
+            });
         });
     </script>
 }

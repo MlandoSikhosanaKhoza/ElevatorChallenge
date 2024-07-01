@@ -5,6 +5,21 @@
     {
       "library": "microsoft-signalr@8.0.0",
       "destination": "wwwroot/lib/microsoft-signalr/"
+    },
+    {
+      "library": "bootstrap-sweetalert@1.0.1",
+      "destination": "wwwroot/bootstrap-sweetalert/",
+      "files": [
+        "sweetalert.min.js",
+        "sweetalert.js",
+        "sweetalert.css",
+        "sweetalert.min.css",
+        "sweetalert.min.css.map"
+      ]
+    },
+    {
+      "library": "sweetalert2@11.12.1",
+      "destination": "wwwroot/lib/sweetalert2/"
     }
   ]
 }
