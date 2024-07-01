@@ -53,6 +53,34 @@ namespace ElevatorChallenge.BusinessLogic
             }
         }
 
+        public (bool IsValid,List<string> Errors) ReviewElevator(int currentFloor,int destinationFloor,int passengerCount)
+        {
+            Building building   = _storageProvider.GetBuilding();
+            bool isValid        = true;
+            List<string> errors = new List<string>();
+            if(currentFloor < 0 || destinationFloor < 0)
+            {
+                isValid = false;
+                errors.Add("Current floor and Destination floor cannot be below zero");
+            }
+            if(currentFloor == destinationFloor)
+            {
+                isValid = false;
+                errors.Add("Current floor and Destination floor cannot be equal");
+            }
+            if(currentFloor > building.NumOfFloors || destinationFloor > building.NumOfFloors)
+            {
+                isValid = false;
+                errors.Add($"Current floor and Destination floor cannot be above {building.NumOfFloors}");
+            }
+            if(!(0 < passengerCount && passengerCount <= building.MaxPassengers))
+            {
+                isValid = false;
+                errors.Add($"Passengers need to be between 1-{building.MaxPassengers}");
+            }
+            return (isValid, errors);
+        }
+
         private Elevator? FindClosestElevator(int CurrentFloor)
         {
             Building building = _storageProvider.GetBuilding();

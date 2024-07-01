@@ -26,13 +26,17 @@ namespace ElevatorChallenge.Api.Controllers
         }
 
         [HttpGet]
-        [Produces("text/plain")]
+        [Produces("application/json")]
         public IActionResult RequestElevator(int currentFloor, int destinationFloor, int passengers)
         {
-            Task task = _buildingLogic.SummonElevatorAsync(currentFloor, destinationFloor, passengers);
-            if (task.IsFaulted)
+            (bool isValid,List<string> errors) = _buildingLogic.ReviewElevator(currentFloor, destinationFloor, passengers);
+            if (isValid)
             {
-                return BadRequest();
+                Task task = _buildingLogic.SummonElevatorAsync(currentFloor, destinationFloor, passengers);
+            }
+            else
+            {
+                return BadRequest(errors);
             }
             return Ok();
         }

@@ -7,19 +7,26 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        IServiceProvider services                       = ConfigureServices();
-        ElevatorStorageService storageService           = services.GetRequiredService<ElevatorStorageService>();
-        BuildingHttpService buildingHttpService         = services.GetRequiredService<BuildingHttpService>();
-        ElevatorRealTimeService elevatorRealTimeService = services.GetRequiredService<ElevatorRealTimeService>();
-        ConsoleDisplayService consoleDisplayService     = services.GetRequiredService<ConsoleDisplayService>();
+        try
+        {
+            IServiceProvider services = ConfigureServices();
+            ElevatorStorageService storageService = services.GetRequiredService<ElevatorStorageService>();
+            BuildingHttpService buildingHttpService = services.GetRequiredService<BuildingHttpService>();
+            ElevatorRealTimeService elevatorRealTimeService = services.GetRequiredService<ElevatorRealTimeService>();
+            ConsoleDisplayService consoleDisplayService = services.GetRequiredService<ConsoleDisplayService>();
 
-        storageService.Building = await buildingHttpService.GetBuildingAsync();
-        
-        await elevatorRealTimeService.InitializeRealTimeElevator();
-        await elevatorRealTimeService.InitializeRealTimePassengerRequests();
-        
-        consoleDisplayService.DisplayElevator();
+            storageService.Building = await buildingHttpService.GetBuildingAsync();
 
+            await elevatorRealTimeService.InitializeRealTimeElevator();
+            await elevatorRealTimeService.InitializeRealTimePassengerRequests();
+
+            consoleDisplayService.DisplayElevator();
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception("Please check if the API is a start up project", ex);
+        }
         Console.ReadLine();
     }
 

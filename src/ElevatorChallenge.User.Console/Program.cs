@@ -8,29 +8,50 @@ class Program
         IServiceProvider services = ConfigureServices();
         ElevatorRequestService requestService = services.GetRequiredService<ElevatorRequestService>();
         string? input = "";
+        PrintInstructions();
         do
         {
-            PrintInstructions();
             try
             {
-                Console.WriteLine("Enter the Current Floor, Destination Floor and Passengers in this format:");
+                Console.WriteLine();
+                Console.WriteLine("Enter the Current Floor, Destination Floor and Passengers:");
                 
                 input = Console.ReadLine();
-                if (input!=null && input.Split(' ').Length==3)
+                if (input!=null && input.Trim().Split(' ').Length == 3)
                 {
-                    int currentFloor = Convert.ToInt32(input.Split(" ")[0]);
+                    int currentFloor     = Convert.ToInt32(input.Split(" ")[0]);
                     int destinationFloor = Convert.ToInt32(input.Split(" ")[1]);
-                    int passengers = Convert.ToInt32(input.Split(" ")[2]);
-                    await requestService.RequestElevatorAsync(currentFloor, destinationFloor, passengers);
+                    int passengers       = Convert.ToInt32(input.Split(" ")[2]);
+
+                    (bool isValid,List<string> errors) = await requestService.RequestElevatorAsync(currentFloor, destinationFloor, passengers);
+
+                    if(!isValid) {
+                        Console.WriteLine();
+                        Console.WriteLine(string.Join(Environment.NewLine,errors));
+                        Console.WriteLine();
+                    }
+                }
+                else if(input == "i")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    PrintInstructions();
+                }
+                else if(input != "q")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid Data - Press i for instructions");
                 }
             }
             catch (Exception)
             {
                 Console.WriteLine("Invalid Input - Please read the instructions");
-                PrintInstructions();
+                Console.WriteLine();
+                Console.WriteLine("Press i to view instructions");
+                Console.WriteLine("Press q to quit");
+                Console.WriteLine();
             }
         } while (!input.ToLower().Equals("q"));
-        Console.ReadLine();
     }
 
     private static void PrintInstructions()
@@ -41,6 +62,10 @@ class Program
         Console.WriteLine("This represents 10 - Current Floor , 2 - Destination Floor, 6 - Passengers");
         Console.WriteLine("Example 2: 14 1 4");
         Console.WriteLine("This represents 14 - Current Floor , 1 - Destination Floor, 4 - Passengers");
+        Console.WriteLine();
+        Console.WriteLine("Press i to view instructions");
+        Console.WriteLine("Press q to quit");
+        Console.WriteLine();
         Console.WriteLine();
     }
 
