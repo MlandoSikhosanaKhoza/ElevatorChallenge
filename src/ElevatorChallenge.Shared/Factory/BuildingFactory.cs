@@ -15,8 +15,8 @@ namespace ElevatorChallenge.Shared.Factory
             try
             {
                 var numberOfElevators = int.Parse(configuration["BuildingConfig:NumOfElevators"] ?? string.Empty);
-                var numberOfFloors = int.Parse(configuration["BuildingConfig:NumOfFloors"] ?? string.Empty);
-                var maxPassenger = int.Parse(configuration["BuildingConfig:MaxPassengers"] ?? string.Empty);
+                var numberOfFloors    = int.Parse(configuration["BuildingConfig:NumOfFloors"] ?? string.Empty);
+                var maxPassenger      = int.Parse(configuration["BuildingConfig:MaxPassengers"] ?? string.Empty);
 
                 return new Building(numberOfElevators, numberOfFloors, maxPassenger);
             }
